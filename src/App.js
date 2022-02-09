@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+
+// Components
+import Header from "./components/Header";
+import AddTask from "./components/AddTask";
 
 const App = () => {
-    return (
-        <div>
-            todolist
-        </div>
-    );
+  return (
+    <>
+      <Header />
+      <AddTask />
+    </>
+  );
 };
 
 export default App;

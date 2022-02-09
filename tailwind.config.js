@@ -1,9 +1,7 @@
 module.exports = {
   content: [
-    "./src/components/TodosList.js",
-    "./src/components/GetTodo.js",
-    "./src/components/shared/Header.js",
-    "./src/components/shared/EditModal.js",
+    "./src/components/Header.js",
+    "./src/components/AddTask.js"
   ],
   theme: {
     extend: {},

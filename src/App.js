@@ -2,14 +2,19 @@ import React from "react";
 
 // Components
 import Header from "./components/Header";
-import AddTask from "./components/AddTask";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+
+// Context Provider
+import TaskContextProvider from "./contexts/TaskContextProvider";
 
 const App = () => {
   return (
-    <>
+    <TaskContextProvider>
       <Header />
-      <AddTask />
-    </>
+      <Main />
+      <Footer />
+    </TaskContextProvider>
   );
 };
 

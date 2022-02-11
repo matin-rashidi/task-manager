@@ -13,13 +13,17 @@ const reducer = (tasks, action) => {
       return newTasks;
     case "COMPLETETASK":
       const completedTask = tasks.find((task) => task.id === action.payload.id);
+      completedTask.isShowOptions = false;
       completedTask.isCompleted = !completedTask.isCompleted;
+      return [...tasks];
+    case "SWITCH-SHOW-OPTIONS":
+      const switchedTask = tasks.find((task) => task.id === action.payload.id);
+      switchedTask.isShowOptions = !switchedTask.isShowOptions;
       return [...tasks];
     default:
       return [tasks];
   }
 };
-
 
 const TaskContextProvider = ({ children }) => {
   const [tasks, dispatch] = useReducer(reducer, initialState);

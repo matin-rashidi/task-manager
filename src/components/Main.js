@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useContext } from "react";
 // Components
-import Tasks from './Tasks';
-import AddTask from './AddTask';
+import Tasks from "./Tasks";
+import AddTask from "./AddTask";
+import EditModal from "./EditModal";
+
+// context
+import { ModalContext } from "../contexts/ModalContextProvider";
 
 const Main = () => {
-    return (
-        <main>
-            <AddTask />
-            <Tasks />
-        </main>
-    );
+  const { isShowModal } = useContext(ModalContext);
+  return (
+    <main>
+      <AddTask />
+      <Tasks />
+      {isShowModal && <EditModal />}
+    </main>
+  );
 };
 
 export default Main;

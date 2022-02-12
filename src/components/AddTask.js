@@ -9,47 +9,52 @@ import { TaskContext } from "../contexts/TaskContextProvider";
 
 const AddTask = () => {
   const {dispatch} = useContext(TaskContext);
+
+  const [isShowList, setIsShowList] = useState(false);
   const [task, setTask] = useState({
     id: "",
     title: "",
     category: "Persional",
     isCompleted: false,
     isShowOptions: false,
-  })
-  const [isShowList, setIsShowList] = useState(false);
+  });
 
   const changeHandler = (event) => {
     setTask({
       ...task,
       title: event.target.value,
-    })
-  }
+    });
+  };
 
   const changeCategory = (event) => {
     setTask({
       ...task,
       category: event.target.name
-    })
-    setIsShowList(false)
+    });
+    setIsShowList(false);
+  };
+
+  const addTask = (event) => {
+    event.preventDefault();
+    task.title.trim().length > 0 && dispatch({type: "ADD-TASK", payload: {...task, id: v4()}});
+    setTask({...task, title: ''});
+    setIsShowList(false);
   }
 
   return (
     <section className="m-5 sm:flex sm:items-center">
 
-      <form 
-        onSubmit={(event) => {
-          event.preventDefault();
-          task.title.trim().length > 0 && dispatch({type: "ADDTASK", payload: {...task, id: v4()}});
-          setTask({...task, title: ''});
-          setIsShowList(false);
-        }} 
-        className="relative sm:w-9/12 xl:w-10/12">
+      <form
+        onSubmit={addTask} 
+        className="relative sm:w-9/12 xl:w-10/12"
+      >
         <input
           type="text"
           placeholder="New task..."
           value={task.title}
           onChange={changeHandler}
-          className="w-full p-3 outline-none font-semibold text-teal-800 border-2 border-r-0 rounded-md focus:border-teal-800 focus:shadow-md transition-all"/>
+          className="w-full p-3 outline-none font-semibold text-teal-800 border-2 border-r-0 rounded-md focus:border-teal-800 focus:shadow-md transition-all"
+        />
         <button type="submit" className="w-14 h-full p-2 rounded-r-md bg-teal-800 text-white absolute -right-px">✚</button>
       </form>
       {/* Input form for get task title */}
@@ -62,28 +67,34 @@ const AddTask = () => {
 
       {isShowList && (
         <>
-        <div onClick={() => setIsShowList(false)} className="fixed top-0 right-0 bottom-0 left-0 z-10"></div>
-        <div className="absolute right-5 sm:top-36 w-4/12 min-w-fit bg-white flex flex-col border rounded-md shadow-md overflow-hidden z-20">
-          <button onClick={changeCategory} name="Persional" className="p-3 hover:bg-teal-50 transition-all text-left">
-            <span className="mr-6 font-bold text-teal-800">P</span>
-            Persional
-          </button>
-          <button onClick={changeCategory} name="Team" className="p-3 hover:bg-teal-50 transition-all text-left">
-            <span className="mr-6 font-bold text-teal-800">T</span>
-            Team
-          </button>
-          <button onClick={changeCategory} name="Homeworks" className="p-3 hover:bg-teal-50 transition-all text-left">
-            <span className="mr-6 font-bold text-teal-800">H</span>
-            Homeworks
-          </button>
-          <button onClick={changeCategory} name="University" className="p-3 hover:bg-teal-50 text-left">
-            <span className="mr-6 font-bold text-teal-800">U</span>
-            University
-          </button>
-        </div>
-        {/* list box */}
-        </>
+          <div onClick={() => setIsShowList(false)} className="fixed top-0 right-0 bottom-0 left-0 z-10"></div>
+          {/* backdrop for colsing listBox */}
 
+          <div className="absolute right-5 sm:top-36 w-4/12 min-w-fit bg-white flex flex-col border rounded-md shadow-md overflow-hidden z-20">
+
+            <button onClick={changeCategory} name="Persional" className="p-3 hover:bg-teal-50 transition-all text-left">
+              <span className="mr-6 font-bold text-teal-800">P</span>
+              Persional
+            </button>
+
+            <button onClick={changeCategory} name="Team" className="p-3 hover:bg-teal-50 transition-all text-left">
+              <span className="mr-6 font-bold text-teal-800">T</span>
+              Team
+            </button>
+
+            <button onClick={changeCategory} name="Homeworks" className="p-3 hover:bg-teal-50 transition-all text-left">
+              <span className="mr-6 font-bold text-teal-800">H</span>
+              Homeworks
+            </button>
+            
+            <button onClick={changeCategory} name="University" className="p-3 hover:bg-teal-50 text-left">
+              <span className="mr-6 font-bold text-teal-800">U</span>
+              University
+            </button>
+
+          </div>
+          {/* list box items*/}
+        </>
       )}
 
     </section>

@@ -6,12 +6,12 @@ const initialState = [];
 
 const reducer = (tasks, action) => {
   switch (action.type) {
-    case "ADDTASK":
+    case "ADD-TASK":
       return [action.payload, ...tasks];
-    case "REMOVETASK":
+    case "REMOVE-TASK":
       const newTasks = tasks.filter((task) => task.id !== action.payload.id);
       return newTasks;
-    case "COMPLETETASK":
+    case "COMPLETE-TASK":
       const completedTask = tasks.find((task) => task.id === action.payload.id);
       completedTask.isShowOptions = false;
       completedTask.isCompleted = !completedTask.isCompleted;
@@ -20,6 +20,11 @@ const reducer = (tasks, action) => {
       const switchedTask = tasks.find((task) => task.id === action.payload.id);
       switchedTask.isShowOptions = !switchedTask.isShowOptions;
       return [...tasks];
+    case "EDIT_TASK":
+      const oldTask = tasks.find(task => task.id === action.payload.oldTask.id);
+      oldTask.title = action.payload.newTask.title;
+      oldTask.category = action.payload.newTask.category;
+      return [...tasks]
     default:
       return [tasks];
   }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 // Icons
 import check from "../assets/icons/check.svg";
@@ -6,13 +6,20 @@ import edit from "../assets/icons/edit.svg";
 import trash from "../assets/icons/trash.svg";
 import dots from "../assets/icons/dots.svg";
 
-// ontext
+// Contexts
 import { TaskContext } from "../contexts/TaskContextProvider";
 import { ModalContext } from "../contexts/ModalContextProvider";
 
 const Tasks = () => {
   const { tasks, dispatch } = useContext(TaskContext);
   const {setIsShowModal, setOldTask} = useContext(ModalContext);
+
+  useEffect(() => {
+    const localTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (localTasks) {
+      dispatch({type: "GET-LOCAL-TASKS", payload: JSON.parse(localStorage.getItem("tasks"))})
+    }
+  }, [])
 
   const editTask = (task) => {
     setIsShowModal(true);

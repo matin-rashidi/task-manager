@@ -36,7 +36,11 @@ const AddTask = () => {
 
   const addTask = (event) => {
     event.preventDefault();
-    task.title.trim().length > 0 && dispatch({type: "ADD-TASK", payload: {...task, id: v4()}});
+
+    if (task.title.trim().length > 0) {
+      dispatch({ type: "ADD-TASK", payload: {...task, id: v4()}});
+    }
+    
     setTask({...task, title: ''});
     setIsShowList(false);
   }

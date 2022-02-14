@@ -39,7 +39,7 @@ const EditModal = () => {
       {/* backdrop for closing modal */}
 
       <form
-        className="p-5 fixed flex flex-col justify-center items-center top-1 right-1 bottom-1 left-1 max-w-lg max-h-fit m-auto bg-white rounded-md"
+        className="p-5 fixed flex flex-col justify-center items-center top-1 right-1 bottom-1 left-1 max-w-lg max-h-fit m-auto bg-white rounded-md dark:bg-slate-800"
         onSubmit={sendNewTask}
       >
         <div className="w-full">
@@ -48,19 +48,19 @@ const EditModal = () => {
             placeholder="Task title..."
             value={newTask.title}
             onChange={changeHandler}
-            className="w-full p-3 outline-none font-semibold text-teal-800 border-2 rounded-md focus:border-teal-800 focus:shadow-md transition-all"
+            className="w-full p-3 outline-none font-semibold text-teal-800 border-2 rounded-md focus:border-teal-800 focus:shadow-md transition-all dark:bg-slate-700 dark:border-0 dark:text-slate-400"
           />
         </div>
         {/* get new task title */}
 
-        <div className="w-full mt-3 border-2 rounded-md shadow-md overflow-hidden">
+        <div className="w-full mt-3 border-2 rounded-md shadow-md overflow-hidden dark:bg-slate-700 dark:border-0 dark:text-slate-400">
           <div className="relative w-full h-10 flex items-center">
             <input
               type="radio"
               name="category"
               value="persional"
               id="persional"
-              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm"
+              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm dark:checked:bg-slate-600"
               onClick={changeCategory}
             />
             <label
@@ -77,7 +77,7 @@ const EditModal = () => {
               name="category"
               value="team"
               id="team"
-              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm"
+              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm dark:checked:bg-slate-600"
               onClick={changeCategory}
             />
             <label
@@ -94,7 +94,7 @@ const EditModal = () => {
               name="category"
               value="homeworks"
               id="homeworks"
-              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm"
+              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm dark:checked:bg-slate-600"
               onClick={changeCategory}
             />
             <label
@@ -111,7 +111,7 @@ const EditModal = () => {
               name="category"
               value="university"
               id="university"
-              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm"
+              className="w-full h-10 appearance-none cursor-pointer checked:bg-teal-700 transition-all rounded-sm dark:checked:bg-slate-600"
               onClick={changeCategory}
             />
             <label

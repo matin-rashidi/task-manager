@@ -46,7 +46,7 @@ const AddTask = () => {
   }
 
   return (
-    <section className="m-5 sm:flex sm:items-center">
+    <section className="mx-5 py-5 sm:flex sm:items-center">
 
       <form
         onSubmit={addTask} 
@@ -57,15 +57,15 @@ const AddTask = () => {
           placeholder="New task..."
           value={task.title}
           onChange={changeHandler}
-          className="w-full p-3 outline-none font-semibold text-teal-800 border-2 border-r-0 rounded-md focus:border-teal-800 focus:shadow-md transition-all"
+          className="w-full p-3 outline-none font-semibold text-teal-800 border-2 border-r-0 rounded-md focus:border-teal-800 focus:shadow-md transition-all dark:bg-slate-800 dark:text-slate-400 dark:border-slate-800 dark:placeholder:text-slate-400 dark:focus:ring dark:focus:ring-teal-800"
         />
         <button type="submit" className="w-14 h-full p-2 rounded-r-md bg-teal-800 text-white absolute -right-px">✚</button>
       </form>
       {/* Input form for get task title */}
 
-      <button onClick={() => setIsShowList(!isShowList)} className="w-full sm:w-3/12 sm:ml-5 sm:py-3 xl:w-2/12 flex justify-between items-center text-left border-2 rounded-md py-2 px-3 my-3 focus:border-teal-800 focus:shadow-md transition-all">
+      <button onClick={() => setIsShowList(!isShowList)} className="w-full sm:w-3/12 sm:ml-5 sm:py-3 xl:w-2/12 flex justify-between items-center text-left font-semibold border-2 rounded-md py-2 px-3 my-3 cursor-pointer focus:border-teal-800 focus:shadow-md transition-all dark:bg-slate-800 dark:text-slate-400 dark:border-slate-800 dark:focus:ring dark:focus:ring-teal-800">
         {task.category}
-        <img className="w-5 " src={selector} alt="selector" />
+        <img className="w-5" src={selector} alt="selector" />
       </button>
       {/* button for opening and closing list box */}
 
@@ -74,25 +74,25 @@ const AddTask = () => {
           <div onClick={() => setIsShowList(false)} className="fixed top-0 right-0 bottom-0 left-0 z-10"></div>
           {/* backdrop for colsing listBox */}
 
-          <div className="absolute right-5 sm:top-36 w-4/12 min-w-fit bg-white flex flex-col border rounded-md shadow-md overflow-hidden z-20">
+          <div className="absolute right-5 sm:top-36 w-4/12 min-w-fit bg-white flex flex-col border rounded-md shadow-md overflow-hidden z-20 dark:text-slate-300 dark:bg-slate-700 dark:border-slate-700">
 
-            <button onClick={changeCategory} name="Persional" className="p-3 hover:bg-teal-50 transition-all text-left">
-              <span className="mr-6 font-bold text-teal-800">P</span>
+            <button onClick={changeCategory} name="Persional" className="p-3 hover:bg-teal-50 transition-all text-left dark:hover:bg-slate-600">
+              <span className="mr-6 font-bold text-teal-800 dark:text-teal-500">P</span>
               Persional
             </button>
 
-            <button onClick={changeCategory} name="Team" className="p-3 hover:bg-teal-50 transition-all text-left">
-              <span className="mr-6 font-bold text-teal-800">T</span>
+            <button onClick={changeCategory} name="Team" className="p-3 hover:bg-teal-50 transition-all text-left dark:hover:bg-slate-600">
+              <span className="mr-6 font-bold text-teal-800 dark:text-teal-500">T</span>
               Team
             </button>
 
-            <button onClick={changeCategory} name="Homeworks" className="p-3 hover:bg-teal-50 transition-all text-left">
-              <span className="mr-6 font-bold text-teal-800">H</span>
+            <button onClick={changeCategory} name="Homeworks" className="p-3 hover:bg-teal-50 transition-all text-left dark:hover:bg-slate-600">
+              <span className="mr-6 font-bold text-teal-800 dark:text-teal-500">H</span>
               Homeworks
             </button>
             
-            <button onClick={changeCategory} name="University" className="p-3 hover:bg-teal-50 text-left">
-              <span className="mr-6 font-bold text-teal-800">U</span>
+            <button onClick={changeCategory} name="University" className="p-3 hover:bg-teal-50 text-left dark:hover:bg-slate-600">
+              <span className="mr-6 font-bold text-teal-800 dark:text-teal-500">U</span>
               University
             </button>
 
